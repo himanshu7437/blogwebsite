@@ -147,4 +147,9 @@ This approach prevents redundant usage of environment variable names throughout 
 
 ---
 
+lets move to authentication 
+
+here we will make authentication using appwrite.
+docs - https://appwrite.io/docs/products/auth 
+make a folder named and appwrite and a file auth.js in it and write down auth.js code 
 
