@@ -34,9 +34,26 @@ if everything is ok. lets omove ahead.
 
 - make a .env file in project root.
 - now add the .env to the gitignore so that it is not push to the github code or expose publically. 
+- now lets add enviromental variables. always remeber there is a syntax of write a enviromental variables.
+we need the following values.
+VITE_APPWRITE_URL=""
+VITE_APPWRITE_PROJECT_ID=""
+VITE_APPWRITE_DATABASE_ID=""
+VITE_APPWRITE_COLLECTION_ID=""
+VITE_APPWRITE_BUCKET_ID=""
+VITE_TINYMCE=""
 
+u can get all these from appwrite and from tinymce website.
 
 1. create a account on appwrite. 
 link - https://appwrite.io/
 2. then click on create project. 
-3. 
+3. name the project.
+4. now u can get the appwrite url and project id from settings past them int o respective place.
+5. now create a datbase and copy paste the database id in to env.
+6. create a collection and copuy paste the id into env file.
+7. now in collection setting go to permission choose all users and select all operation i.e create, read update, delete. 
+8. now create attributes i.e title, content, featured image, status, userid. 
+9. now create a indeces named ststaus. 
+10. then crete a storage named images. and change a setting of permissonas sllowing all to do all the opratons. 
+11. copy paste the bucket id into env file. 
