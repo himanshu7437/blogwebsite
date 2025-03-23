@@ -147,9 +147,55 @@ This approach prevents redundant usage of environment variable names throughout 
 
 ---
 
-lets move to authentication 
+## **Authentication with Appwrite**  
 
-here we will make authentication using appwrite.
-docs - https://appwrite.io/docs/products/auth 
-make a folder named and appwrite and a file auth.js in it and write down auth.js code 
+In this section, we will set up **user authentication** using **Appwrite's Auth API**.  
 
+📌 **Features we will implement:**  
+✅ **User Registration** (Create Account)  
+✅ **User Login**  
+✅ **User Logout**  
+✅ **Get Current Logged-in User**  
+
+---
+
+## **Step 1: Create the Authentication Module**  
+
+1. **Create a new folder** inside the `src/` directory:  
+
+   ```sh
+   mkdir src/appwrite
+   ```
+
+2. **Inside the `appwrite/` folder, create a file named `auth.js`:**  
+
+   ```sh
+   touch src/appwrite/auth.js
+   ```
+
+---
+
+## **Step 2: Implement Authentication Functions**  
+
+Now, open `auth.js` and add the source code. 
+
+## **Step 3: Explanation of the Functions**  
+
+1. **`createAccount(email, password, name)`**  
+   - Registers a new user using **email, password, and name**.  
+   - Uses `account.create("unique()", email, password, name)` to generate a unique user ID.  
+
+2. **`login(email, password)`**  
+   - Authenticates a user using **email and password**.  
+   - Creates an **email session** for the user.  
+
+3. **`getCurrentUser()`**  
+   - Fetches the **currently logged-in user** details.  
+   - If no user is logged in, it returns `null`.  
+
+4. **`logout()`**  
+   - Ends the **current session**, logging the user out.  
+
+---
+
+now lets move to next file that is config.js
