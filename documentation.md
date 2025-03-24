@@ -198,4 +198,40 @@ Now, open `auth.js` and add the source code.
 
 ---
 
-now lets move to next file that is config.js
+Now let's set up the **config.js** file to manage Appwrite services for handling blog posts.  
+
+---
+
+## **Step 1: Create the Config File**  
+Inside the `src/appwrite/` folder, create a new file:  
+
+```sh
+touch src/appwrite/config.js
+```
+---
+
+## **Step 2: Implement CRUD Operations for Blog Posts**  
+
+Now, open `config.js` and add the code from the source code. 
+
+---
+
+# **Step 4: Explanation of some Functions**  
+
+1. **`createPost(title, content, userId)`**  
+   - Creates a new blog post with a unique ID.  
+   - Stores **title, content, and userId**.  
+
+2. **`getPost(postId)`**  
+   - Fetches a **single post** based on its ID.  
+
+3. **`getPosts()`**  
+   - Retrieves **all blog posts** from the database.  
+
+4. **`updatePost(postId, title, content)`**  
+   - Updates a post's **title** and **content**.  
+
+5. **`deletePost(postId)`**  
+   - Deletes a post permanently.  
+
+---
