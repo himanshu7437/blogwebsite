@@ -244,3 +244,11 @@ authSlice.js → Manages authentication state
 
 ---
 
+Great! Now we'll create a components folder and add the following:
+
+Header.js → The navigation bar
+
+Footer.js → The page footer
+
+index.js → Exports all components for easy imports
+
