@@ -235,3 +235,12 @@ Now, open `config.js` and add the code from the source code.
    - Deletes a post permanently.  
 
 ---
+
+Let's set up Redux Toolkit for managing authentication state. We'll create a store folder and two files:
+
+store.js → Configures Redux store
+
+authSlice.js → Manages authentication state
+
+---
+
