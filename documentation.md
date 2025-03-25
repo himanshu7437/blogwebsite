@@ -252,3 +252,6 @@ Footer.js → The page footer
 
 index.js → Exports all components for easy imports
 
+---
+
+lets make some changes in app.jsx: 
