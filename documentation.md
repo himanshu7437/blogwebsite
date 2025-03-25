@@ -254,7 +254,8 @@ index.js → Exports all components for easy imports
 
 ---
 
-### **Summary of `App.js`**  
+Now update the app.jsx.
+### **Summary of `App.jsx`**  
 
 This file manages authentication state and layout for the application.  
 
@@ -270,3 +271,28 @@ This file manages authentication state and layout for the application.
 This ensures seamless user authentication and structured page rendering. 🚀
 
 ---
+
+Now, we will update the main.jsx. This file **initializes and renders** the React application, setting up **routing, global state management, and authentication handling**.  
+
+#### **🔹 Key Functionalities**  
+1️⃣ **Imports Dependencies**  
+   - React, Redux (`Provider` for global state), and React Router (`createBrowserRouter` for routing).  
+   - Project-specific components (e.g., `App`, `AuthLayout`, `Home`, `Login`, `Signup`).  
+
+2️⃣ **Configures React Router**  
+   - Uses `createBrowserRouter` to define the **routes and layout** of the application.  
+   - Ensures that pages like `Login`, `Signup`, and `Posts` follow authentication rules via `AuthLayout`.  
+
+3️⃣ **Sets Up the Redux Store**  
+   - Wraps the app inside `<Provider store={store}>` to manage **global authentication state**.  
+
+4️⃣ **Renders the App**  
+   - Uses `createRoot().render()` to mount the app inside the root DOM element (`#root`).  
+
+#### **🔹 Why This is Important?**  
+✅ **Ensures proper routing** between pages.  
+✅ **Manages authentication state globally** using Redux.  
+✅ **Optimized rendering** with React’s `StrictMode`.  
+
+---
+
