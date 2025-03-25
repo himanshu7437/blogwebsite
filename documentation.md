@@ -254,4 +254,19 @@ index.js → Exports all components for easy imports
 
 ---
 
-lets make some changes in app.jsx: 
+### **Summary of `App.js`**  
+
+This file manages authentication state and layout for the application.  
+
+- **Handles User Authentication** 🛡️  
+  - Uses `useEffect` to check if a user is logged in via `authService.getCurrentUser()`.  
+  - Dispatches `login` if a user exists, otherwise dispatches `logout`.  
+  - Prevents rendering until authentication check is complete (`loading` state).  
+
+- **Defines Main Layout** 🏗️  
+  - Wraps the app with a flexible, responsive container.  
+  - Includes **Header**, **Footer**, and dynamic content via `Outlet` for routing.  
+
+This ensures seamless user authentication and structured page rendering. 🚀
+
+---
