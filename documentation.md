@@ -295,4 +295,84 @@ Now, we will update the main.jsx. This file **initializes and renders** the Reac
 ✅ **Optimized rendering** with React’s `StrictMode`.  
 
 ---
+Now, let's move to components. 
+
+These components are essential building blocks of the application, handling **forms, authentication, UI elements, and post management.**  
+
+---
+
+## **📝 PostForm.jsx**  
+📌 **Purpose:** Handles post creation and editing.  
+🔹 Uses `useForm()` for form handling.  
+🔹 Uploads images and stores post data using `appwriteService`.  
+🔹 Allows users to **add, edit, and update blog posts.**  
+
+---
+
+## **🔒 AuthLayout.jsx**  
+📌 **Purpose:** Restricts access to pages based on authentication.  
+🔹 Wraps protected routes and redirects users if not logged in.  
+🔹 Used in pages like `AddPost` and `EditPost`.  
+
+---
+
+## **🖱️ Button.jsx**  
+📌 **Purpose:** Reusable button component for UI consistency.  
+🔹 Accepts props for `color`, `size`, and `onClick` actions.  
+
+---
+
+## **📝 Input.jsx**  
+📌 **Purpose:** Custom input field for forms.  
+🔹 Supports `text`, `email`, `password`, and `file uploads`.  
+🔹 Integrated with `React Hook Form`.  
+
+---
+
+## **🔐 Login.jsx**  
+📌 **Purpose:** Handles user login.  
+🔹 Uses `authService` to **authenticate users** via email & password.  
+🔹 On success, redirects users to the homepage.  
+
+---
+
+## **🎨 Logo.jsx**  
+📌 **Purpose:** Displays the **brand logo**.  
+🔹 Used in the header, footer, and authentication pages.  
+
+---
+
+## **📌 PostCard.jsx**  
+📌 **Purpose:** Displays a **preview of a blog post**.  
+🔹 Shows `title`, `image`, and `author`.  
+🔹 Clicking on it navigates to the full post.  
+
+---
+
+## **📝 RTE (Rich Text Editor)**  
+📌 **Purpose:** Enhances post content editing.  
+🔹 Provides a **WYSIWYG (What You See Is What You Get) editor**.  
+🔹 Supports **bold, italic, images, and formatted text**.  
+
+---
+
+## **🎛️ Select.jsx**  
+📌 **Purpose:** Custom dropdown selector.  
+🔹 Used in forms for options like `Post Status (Active/Inactive)`.  
+
+---
+
+## **🔑 Signup.jsx**  
+📌 **Purpose:** Handles **user registration**.  
+🔹 Collects user details and creates an account using `authService`.  
+🔹 Redirects users to the homepage after successful signup.  
+
+---
+
+### **📌 Why These Components?**  
+✅ **Reusability:** Modular components ensure clean and maintainable code.  
+✅ **Scalability:** Easily extendable for future features.  
+✅ **User Experience:** Provides a smooth and interactive UI.  
+
+---
 
