@@ -17,6 +17,7 @@ const authSlice = createSlice({
             state.status = false;
             state.userData = null;
         }
+        // we can add more like state.allpost, state.userpost
     }
 })
 
