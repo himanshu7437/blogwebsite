@@ -54,7 +54,7 @@ function Home() {
                         <img 
                             src={myImage} 
                             alt="No posts" 
-                            className="w-64 h-64 mb-8"
+                            className="mb-8 h-100 w-180"
                         />
                         <h1 className="mb-4 text-4xl font-bold text-gray-900">
                             Welcome to Our Blog
@@ -114,7 +114,7 @@ function Home() {
                         Browse through our archive or create your own post!
                     </p>
                     <Link 
-                        to="/create-post"
+                        to="/add-post"
                         className="inline-block px-6 py-3 text-white transition-colors bg-green-600 rounded-lg hover:bg-green-700"
                     >
                         Create New Post
