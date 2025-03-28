@@ -446,3 +446,5 @@ We will **display a loader** when the blog posts are being fetched instead of sh
 
 ---
 
+further improvements:---
+after that first we improve the design of footer and header. after that improve the home page with improved ui. afer that improve the my post(ehich is previous all post page) here now user can see his post with status shown above. here we also improve the login signup page with new ui.
