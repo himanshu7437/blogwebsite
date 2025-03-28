@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import appwriteService from '../appwrite/config'
 import { Container, PostCard, Loader } from '../components'
 import { Link } from 'react-router'
+import myImage from '../images/HomePage.jpg'
 
 function Home() {
     const [posts, setPosts] = useState([])
@@ -51,7 +52,7 @@ function Home() {
                 <Container>
                     <div className="flex flex-col items-center px-4 py-12 text-center">
                         <img 
-                            src="" 
+                            src={myImage} 
                             alt="No posts" 
                             className="w-64 h-64 mb-8"
                         />
