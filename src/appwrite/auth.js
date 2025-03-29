@@ -1,5 +1,6 @@
 import conf from "../conf/conf";
 import { Client, Account, ID } from "appwrite";
+import service from "./config";
 
 export class AuthService {
     client = new Client();
@@ -16,7 +17,10 @@ export class AuthService {
     async createAccount({email, password, name}) {
         try {
             const userAccount = await this.account.create(ID.unique(), email, password, name )
+            
             if(userAccount) {
+                // Create initial profile
+                await service.createInitialProfile(userAccount.$id, name)
                 // call another method
                 return this.login({email, password});
 

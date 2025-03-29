@@ -12,6 +12,7 @@ export default function Post() {
     const [error, setError] = useState(null);
     const { slug } = useParams();
     const navigate = useNavigate();
+    const [authorProfile, setAuthorProfile] = useState(null);
     const userData = useSelector((state) => state.auth.userData);
     const isAuthor = post && userData ? post.userId === userData.$id : false;
 
@@ -22,6 +23,11 @@ export default function Post() {
                     const post = await appwriteService.getPost(slug);
                     if (post) {
                         setPost(post);
+
+
+                    const profile = await appwriteService.getProfileByUserId(post.userId);
+                    setAuthorProfile(profile);
+                    
                     } else {
                         navigate("/");
                     }
@@ -121,7 +127,17 @@ export default function Post() {
                             
                             <div className="flex items-center mb-6 text-sm text-gray-500">
                                 <span className="mr-4">
-                                    Posted by: {post.username || "Anonymous"}
+                                Posted by:{" "}
+                                    {authorProfile ? (
+                                        <Link 
+                                            to={`/profile/${authorProfile.username}`}
+                                            className="text-blue-600 transition-colors hover:text-blue-800 hover:underline"
+                                        >
+                                            {authorProfile.username}
+                                        </Link>
+                                    ) : (
+                                        "Loading author..."
+                                    )}
                                 </span>
                                 <span>
                                     {new Date(post.$createdAt).toLocaleDateString()}

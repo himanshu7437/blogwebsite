@@ -13,7 +13,8 @@ import AddPost from './pages/AddPost.jsx'
 import EditPost from './pages/EditPost.jsx'
 import MyPosts from './pages/MyPosts.jsx'
 import Post from './pages/Post.jsx'
-
+import Profile from './pages/Profile.jsx'
+import EditProfile from './pages/EditProfile.jsx'
 
 const router = createBrowserRouter([
   {
@@ -71,6 +72,31 @@ const router = createBrowserRouter([
             path: "/post/:slug",
             element: <Post />,
         },
+        
+        // new routes added
+        {
+            path: "/edit-profile",
+            element: (
+                <AuthLayout authentication>
+                <EditProfile />
+              </AuthLayout>
+            ),
+        },
+        {
+            path: "/profile/:username",
+            element: (
+                <Profile />
+            ),
+        },
+        // Add 404 handler
+      {
+        path: "*",
+        element: (
+          <div className="flex items-center justify-center h-screen">
+            <h1 className="text-2xl">404 - Page Not Found</h1>
+          </div>
+        )
+      }
     ],
 },
 ])
