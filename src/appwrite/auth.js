@@ -18,7 +18,9 @@ export class AuthService {
         try {
             const userAccount = await this.account.create(ID.unique(), email, password, name )
             await this.account.createEmailPasswordSession(email, password),
-            await this.account.createVerification("http://localhost:5173/verify")
+            await this.account.createVerification(
+                `${conf.appwriteFrontendUrl}/verify`
+            )
             
             if(userAccount) {
                 // Create initial profile
@@ -54,7 +56,9 @@ export class AuthService {
 
     async sendVerificationEmail() {
         try {
-            return await this.account.createVerification("http://localhost:5173/verify");
+            return await this.account.createVerification(
+                `${conf.appwriteFrontendUrl}/verify`
+            );
         } catch (error) {
             console.error("Verification email failed:", error);
             throw error;
