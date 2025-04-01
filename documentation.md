@@ -473,4 +473,16 @@ We will **display a loader** when the blog posts are being fetched instead of sh
 
 ---
 
-now we add email verification to the authentication login system. also add a like and comment features to the posts for the logged in users. 
+### **Email Verification for Authentication System**
+
+We have implemented an email verification feature for the authentication login system. When a user signs up, they will receive a verification email containing a link to confirm their email address. Only after confirming the email will the user be able to access the platform's features, ensuring the authenticity of each account.
+
+### **Like and Comment Features for Posts**
+
+To enhance user interaction with blog posts, we have added the functionality for logged-in users to like and comment on posts. This feature allows users to engage more deeply with the content, offering feedback through comments and showing appreciation via likes. Only authenticated users are permitted to use these features to ensure proper user tracking.
+
+### **Chatbot for Predefined Questions**
+
+We have integrated a chatbot into the platform, designed to assist users by answering predefined questions. This chatbot provides instant responses to frequently asked queries, such as account issues, post management, and general information about the platform. By utilizing a predefined set of questions and responses, the chatbot helps users quickly find the information they need, enhancing their overall experience on the platform.
+
+--- 

@@ -17,5 +17,6 @@ import LikeButton from "./LikeButton";
 import CommentSection from "./CommentSection";
 import VerifyEmailHandler from "./VerifyEmailHandler";
 import VerifyEmail from "./VerifyEmail";
+import Chatbot from "./Chatbot";
 
-export {Header, Footer, Container, Logo, LogoutBtn, RTE, Signup, Login, PostForm, PostCard, AuthLayout, Button, Input, Select, Loader, LikeButton, CommentSection, VerifyEmailHandler, VerifyEmail }
+export {Header, Footer, Container, Logo, LogoutBtn, RTE, Signup, Login, PostForm, PostCard, AuthLayout, Button, Input, Select, Loader, LikeButton, CommentSection, VerifyEmailHandler, VerifyEmail, Chatbot }

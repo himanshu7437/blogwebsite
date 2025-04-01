@@ -4,7 +4,7 @@ import authService from './appwrite/auth'
 import {login, logout} from './store/authSlice'
 import { Footer, Header } from './components'
 import {Outlet} from 'react-router'
-
+import {Chatbot} from './components'
 
 
 function App() {
@@ -33,6 +33,7 @@ function App() {
           <Outlet />
         </main>
         <Footer />
+        <Chatbot />
       </div>
     </div>
     

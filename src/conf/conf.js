@@ -10,7 +10,8 @@ const conf = {
     appwriteBucket2Id: String(import.meta.env.VITE_APPWRITE_AVATARS_BUCKET_ID),
     appwriteTinyMce: String(import.meta.env.VITE_TINYMCE),
     defaultAvatarId: String(import.meta.env.VITE_APPWRITE_DEFAULT_AVATAR),
-    appwriteFrontendUrl: String(import.meta.env.VITE_APPWRITE_FRONTEND_URL)    
+    appwriteFrontendUrl: String(import.meta.env.VITE_APPWRITE_FRONTEND_URL),   
+    geminiapikey: String(import.meta.env.VITE_GEMINI_API_KEY)   
 }
 
 export default conf
