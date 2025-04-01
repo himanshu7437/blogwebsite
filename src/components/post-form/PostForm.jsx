@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux'
 
 
 function PostForm({post}) {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const {register, handleSubmit, watch, setValue, control, getValues} = useForm({
     defaultValues: {
       title: post?.title || '',
@@ -22,23 +23,26 @@ function PostForm({post}) {
   const navigate = useNavigate()
   const userData = useSelector(state => state.auth.userData)
 
+  
   const submit = async (data) => {
-    if(post) {
-      const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null
+    setIsSubmitting(true); // Start loading
+    try {
+      if(post) {
+        const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null
       
-      if(file) {
-        appwriteService.deleteFile(post.featuredImage);
-      }
-      const dbPost = await appwriteService.updatePost(post.$id, {
-        ...data,
-        featuredImage: file ? file.$id: undefined,
-      });
-      
-      if(dbPost) {
-        navigate(`/post/${dbPost.$id}`)
-      }
-    } else {
-      // assignment - improve the below line check conditionally as done above. check if its needed or not.
+        if(file) {
+          appwriteService.deleteFile(post.featuredImage);
+        }
+        const dbPost = await appwriteService.updatePost(post.$id, {
+          ...data,
+          featuredImage: file ? file.$id: undefined,
+        });
+        
+        if(dbPost) {
+          navigate(`/post/${dbPost.$id}`)
+        }
+      } else {
+        // assignment - improve the below line check conditionally as done above. check if its needed or not.
       const file = await appwriteService.uploadFile(data.image[0]);
 
       if(file) {
@@ -53,9 +57,14 @@ function PostForm({post}) {
           navigate(`/post/${dbPost.$id}`)
         }
       }
+      }
+    } finally {
+      setIsSubmitting(false); // Stop loading in any case
     }
   }
 
+
+  
   const slugTransform = useCallback((value) => {
     if (value && typeof value === 'string')
         return value
@@ -120,8 +129,15 @@ function PostForm({post}) {
                     className="mb-4"
                     {...register("status", { required: true })}
                 />
-                <Button type="submit" bgColor={post ? "bg-green-500" : undefined} className="w-full">
-                    {post ? "Update" : "Submit"}
+                <Button 
+                  type="submit" 
+                  bgColor={isSubmitting ? "bg-gray-400" : post ? "bg-green-500" : undefined} 
+                  className="w-full"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? (
+                    post ? "Updating..." : "Submitting..."
+                  ) : post ? "Update" : "Submit"}
                 </Button>
             </div>
         </form>

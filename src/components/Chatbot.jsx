@@ -165,7 +165,7 @@ export default function Chatbot() {
       ) : (
         <Button
           onClick={() => setIsOpen(true)}
-          className="p-4 transition-all duration-300 rounded-full shadow-xl hover:shadow-2xl bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 animate-bounce"
+          className="p-4 transition-all duration-300 rounded-full shadow-xl hover:shadow-2xl bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
         >
           <MessageCircle size={24} />
           {/* {messages.length > 0 && (

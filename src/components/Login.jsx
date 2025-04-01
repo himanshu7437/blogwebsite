@@ -13,9 +13,11 @@ function Login() {
     const { register, handleSubmit } = useForm()
     const [error, setError] = useState("")
     const [showPassword, setShowPassword] = useState(false)
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const login = async(data) => {
         setError("")
+        setIsSubmitting(true);
         try {
             // Client-side validation
             if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(data.email)) {
@@ -38,6 +40,8 @@ function Login() {
             }
         } catch (error) {
             setError(error.message)
+        } finally {
+            setIsSubmitting(false);
         }
     }
 
@@ -119,9 +123,21 @@ function Login() {
 
                     <Button
                         type="submit"
-                        className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2.5 rounded-md transition-colors font-medium"
+                        className={`w-full ${
+                            isSubmitting 
+                                ? 'bg-gray-400 cursor-not-allowed' 
+                                : 'bg-blue-600 hover:bg-blue-700'
+                        } text-white py-2.5 rounded-md transition-colors font-medium`}
+                        disabled={isSubmitting}
                     >
-                        Sign in
+                        {isSubmitting ? (
+                            <div className="flex items-center justify-center space-x-2">
+                                <div className="w-4 h-4 border-2 border-white rounded-full border-t-transparent animate-spin"></div>
+                                <span>Signing in...</span>
+                            </div>
+                        ) : (
+                            'Sign in'
+                        )}
                     </Button>
                 </form>
             </div>

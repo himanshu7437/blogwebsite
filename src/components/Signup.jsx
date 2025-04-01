@@ -13,14 +13,18 @@ function Signup() {
     const [error, setError] = useState("")
     const [showPassword, setShowPassword] = useState(false)
     const { register, handleSubmit } = useForm()
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const create = async(data) => {
         setError("")
+        setIsSubmitting(true);
         try {
             const userData = await authService.createAccount(data)
             navigate("/verify-email")
         } catch (error) {
             setError(error.message)
+        } finally {
+            setIsSubmitting(false);
         }
     }
 
@@ -96,9 +100,21 @@ function Signup() {
 
                     <Button
                         type="submit"
-                        className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2.5 rounded-md transition-colors font-medium"
+                        className={`w-full ${
+                            isSubmitting 
+                                ? 'bg-gray-400 cursor-not-allowed' 
+                                : 'bg-blue-600 hover:bg-blue-700'
+                        } text-white py-2.5 rounded-md transition-colors font-medium`}
+                        disabled={isSubmitting}
                     >
-                        Create Account
+                        {isSubmitting ? (
+                            <div className="flex items-center justify-center space-x-2">
+                                <div className="w-4 h-4 border-2 border-white rounded-full border-t-transparent animate-spin"></div>
+                                <span>Creating Account...</span>
+                            </div>
+                        ) : (
+                            'Create Account'
+                        )}
                     </Button>
                 </form>
             </div>
