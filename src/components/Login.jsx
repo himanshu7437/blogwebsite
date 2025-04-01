@@ -17,12 +17,24 @@ function Login() {
     const login = async(data) => {
         setError("")
         try {
-            const session = await authService.login(data)
-            if(session) {
-                const userData = await authService.getCurrentUser()
-                if(userData) dispatch(authLogin(userData));
-                navigate("/")
-                window.location.reload();
+            // Client-side validation
+            if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(data.email)) {
+                throw new Error("Invalid email format");
+            }
+
+            const session = await authService.login(data);
+            
+            if (session) {
+                const userData = await authService.getCurrentUser();
+                
+                if (!userData.emailVerification) {
+                    await authService.logout();
+                    navigate('/verify', { state: { email: data.email } });
+                    return;
+                }
+
+                dispatch(authLogin(userData));
+                navigate("/", { replace: true });
             }
         } catch (error) {
             setError(error.message)
@@ -33,8 +45,8 @@ function Login() {
         <div className="flex items-center justify-center min-h-screen p-4 bg-gray-50">
             <div className="w-full max-w-md p-8 bg-white border border-gray-200 rounded-lg shadow-sm">
                 <div className="flex flex-col items-center mb-8">
-                    <div className="mb-4">
-                        <Logo className="w-16 h-16" />
+                    <div className="mb-4 text-xl font-bold">
+                        BlogSphere
                     </div>
                     <h1 className="mb-2 text-2xl font-semibold text-gray-800">Sign in to your account</h1>
                     <p className="text-sm text-gray-600">

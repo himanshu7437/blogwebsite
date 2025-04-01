@@ -19,8 +19,8 @@ export class Service {
             return await this.databases.createDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
-                slug,
-                { title, content, featuredImage, status, userId }
+                ID.unique(),
+                { title, content, featuredImage, status, userId, slug }
             );
         } catch (error) {
             console.error("Appwrite service :: createPost :: error", error);
@@ -28,13 +28,13 @@ export class Service {
         }
     }
 
-    async updatePost(slug, { title, content, featuredImage, status }) {
+    async updatePost(postid, { title, content, featuredImage, status, slug }) {
         try {
             return await this.databases.updateDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
-                slug,
-                { title, content, featuredImage, status }
+                postid,
+                { title, content, featuredImage, status, slug }
             );
         } catch (error) {
             console.error("Appwrite service :: updatePost :: error", error);
@@ -42,12 +42,12 @@ export class Service {
         }
     }
 
-    async deletePost(slug) {
+    async deletePost(postid) {
         try {
             await this.databases.deleteDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
-                slug
+                postid
             );
             return true;
         } catch (error) {
@@ -56,12 +56,12 @@ export class Service {
         }
     }
 
-    async getPost(slug) {
+    async getPost(postid) {
         try {
             return await this.databases.getDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
-                slug
+                postid
             );
         } catch (error) {
             console.error("Appwrite service :: getPost :: error", error);
@@ -268,6 +268,111 @@ async updateProfile(profileId, { username, bio, avatarFile, userId, name, social
         throw error
     }
 }
+
+// Check if a user has already liked a specific post
+async checkUserLike(postId, userId) {
+    try {
+        const response = await this.databases.listDocuments(
+            conf.appwriteDatabaseId,
+            conf.appwriteLikesCollectionId,  // Ensure this collection is set in conf
+            [
+                Query.equal("postId", postId),
+                Query.equal("userId", userId)
+            ]
+        );
+        return response.documents.length ? response.documents[0] : null;
+    } catch (error) {
+        console.error("Appwrite service :: checkUserLike :: error", error);
+        return null;
+    }
+}
+
+// Retrieve the total number of likes for a specific post
+async getPostLikes(postId) {
+    try {
+        const response = await this.databases.listDocuments(
+            conf.appwriteDatabaseId,
+            conf.appwriteLikesCollectionId,
+            [Query.equal("postId", postId)]
+        );
+        return response.documents.length;
+    } catch (error) {
+        console.error("Appwrite service :: getPostLikes :: error", error);
+        return 0;
+    }
+}
+
+// Add a like to a post for a given user
+async likePost(postId, userId) {
+    try {
+        // Check if user has already liked the post
+        const existingLike = await this.checkUserLike(postId, userId);
+        if (existingLike) {
+            return existingLike; // Return existing like if already liked
+        }
+
+        // Create a new like document
+        return await this.databases.createDocument(
+            conf.appwriteDatabaseId,
+            conf.appwriteLikesCollectionId,
+            ID.unique(),
+            { postId, userId }
+        );
+    } catch (error) {
+        console.error("Appwrite service :: likePost :: error", error);
+        throw error;
+    }
+}
+
+// Remove a like from the database using the likeId
+async unlikePost(likeId) {
+    try {
+        await this.databases.deleteDocument(
+            conf.appwriteDatabaseId,
+            conf.appwriteLikesCollectionId,
+            likeId
+        );
+        return true;
+    } catch (error) {
+        console.error("Appwrite service :: unlikePost :: error", error);
+        return false;
+    }
+}
+
+// adding a comments section.
+
+async addComment(postId, userId, text, username) {
+    return await this.databases.createDocument(
+      conf.appwriteDatabaseId,
+      conf.appwriteCommentsCollectionId,
+      ID.unique(),
+      {
+        postId,
+        userId,
+        text,
+        username,
+      }
+    )
+  };
+
+  async getPostComments(postId)  {
+    const response = await this.databases.listDocuments(
+        conf.appwriteDatabaseId,
+        conf.appwriteCommentsCollectionId,
+      [Query.equal("postId", postId)]
+    );
+    return response.documents;
+  };
+
+  async deleteComment(commentId) {
+    return await this.databases.deleteDocument(
+        conf.appwriteDatabaseId,
+        conf.appwriteCommentsCollectionId,
+        commentId
+    )
+}
+  
+  
 
 }
 

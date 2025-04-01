@@ -17,12 +17,13 @@ export class AuthService {
     async createAccount({email, password, name}) {
         try {
             const userAccount = await this.account.create(ID.unique(), email, password, name )
+            await this.account.createEmailPasswordSession(email, password),
+            await this.account.createVerification("http://localhost:5173/verify")
             
             if(userAccount) {
                 // Create initial profile
-                await service.createInitialProfile(userAccount.$id, name)
+                return await service.createInitialProfile(userAccount.$id, name)
                 // call another method
-                return this.login({email, password});
 
             } else {
                 return userAccount;
@@ -38,6 +39,24 @@ export class AuthService {
 
 
         } catch (error) {
+            throw error;
+        }
+    }
+
+    async verifyEmail(userId, secret) {
+        try {
+            return await this.account.updateVerification(userId, secret);
+        } catch (error) {
+            console.error("Verification failed:", error);
+            throw error;
+        }
+    }
+
+    async sendVerificationEmail() {
+        try {
+            return await this.account.createVerification("http://localhost:5173/verify");
+        } catch (error) {
+            console.error("Verification email failed:", error);
             throw error;
         }
     }

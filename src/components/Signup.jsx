@@ -18,11 +18,7 @@ function Signup() {
         setError("")
         try {
             const userData = await authService.createAccount(data)
-            if(userData) {
-                const userData = await authService.getCurrentUser()
-                if(userData) dispatch(login(userData));
-                navigate("/")
-            }
+            navigate("/verify-email")
         } catch (error) {
             setError(error.message)
         }
@@ -32,8 +28,8 @@ function Signup() {
         <div className="flex items-center justify-center min-h-screen p-4 bg-gray-50">
             <div className="w-full max-w-md p-8 bg-white border border-gray-200 rounded-lg shadow-sm">
                 <div className="flex flex-col items-center mb-8">
-                    <div className="mb-4">
-                        <Logo className="w-16 h-16" />
+                    <div className="mb-4 text-xl font-bold">
+                        BlogSphere
                     </div>
                     <h1 className="mb-2 text-2xl font-semibold text-gray-800">Create your account</h1>
                     <p className="text-sm text-gray-600">

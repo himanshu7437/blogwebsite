@@ -13,5 +13,9 @@ import Button from "./Button";
 import Input from './Input'
 import Select from './Select'
 import Loader from "./Loader";
+import LikeButton from "./LikeButton";
+import CommentSection from "./CommentSection";
+import VerifyEmailHandler from "./VerifyEmailHandler";
+import VerifyEmail from "./VerifyEmail";
 
-export {Header, Footer, Container, Logo, LogoutBtn, RTE, Signup, Login, PostForm, PostCard, AuthLayout, Button, Input, Select, Loader }
+export {Header, Footer, Container, Logo, LogoutBtn, RTE, Signup, Login, PostForm, PostCard, AuthLayout, Button, Input, Select, Loader, LikeButton, CommentSection, VerifyEmailHandler, VerifyEmail }

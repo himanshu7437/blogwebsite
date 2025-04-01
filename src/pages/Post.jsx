@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router";
 import appwriteService from "../appwrite/config";
-import { Button, Container, Loader } from "../components";
+import { Button, Container, Loader, LikeButton, CommentSection } from "../components";
 import parse from "html-react-parser";
 import { useSelector } from "react-redux";
 import { FaEdit, FaTrash, FaArrowLeft } from "react-icons/fa";
@@ -13,6 +13,7 @@ export default function Post() {
     const { slug } = useParams();
     const navigate = useNavigate();
     const [authorProfile, setAuthorProfile] = useState(null);
+    const [currentProfile, setcurrentProfile] = useState(null);
     const userData = useSelector((state) => state.auth.userData);
     const isAuthor = post && userData ? post.userId === userData.$id : false;
 
@@ -28,6 +29,17 @@ export default function Post() {
                     const profile = await appwriteService.getProfileByUserId(post.userId);
                     setAuthorProfile(profile);
                     
+                    if (userData) {
+                        try {
+                            const NewProfile = await appwriteService.getProfileByUserId(userData.$id);
+                            setcurrentProfile(NewProfile);
+                        } catch (error) {
+                            console.error("Error fetching current profile:", error);
+                            setcurrentProfile(null);
+                        }
+                    }
+
+                    
                     } else {
                         navigate("/");
                     }
@@ -39,7 +51,7 @@ export default function Post() {
             }
         };
         fetchPost();
-    }, [slug, navigate]);
+    }, [slug, navigate, userData]);
 
     const deletePost = async () => {
         try {
@@ -110,7 +122,7 @@ export default function Post() {
                             </div>
                         )}
                     </div>
-
+    
                     {/* Content Section */}
                     <div className="p-8">
                         <div className="mb-8">
@@ -127,7 +139,7 @@ export default function Post() {
                             
                             <div className="flex items-center mb-6 text-sm text-gray-500">
                                 <span className="mr-4">
-                                Posted by:{" "}
+                                    Posted by:{" "}
                                     {authorProfile ? (
                                         <Link 
                                             to={`/profile/${authorProfile.username}`}
@@ -143,14 +155,29 @@ export default function Post() {
                                     {new Date(post.$createdAt).toLocaleDateString()}
                                 </span>
                             </div>
+    
+                            {/* Like Button */}
+                            <div className="mb-6">
+                                <LikeButton postId={post.$id} />
+                            </div>
                         </div>
-
+    
+                        {/* Article Content */}
                         <article className="pt-8 prose prose-lg border-t max-w-none">
                             {parse(post.content)}
                         </article>
+    
+    
                     </div>
+                    
+                </div>
+                
+                {/* Comments Section - Added at the End with Spacing */}
+                <div className="pt-8 mt-12">
+                    <CommentSection postId={post.$id} username={currentProfile?.username || "Anonymous"} />
                 </div>
             </Container>
         </div>
     ) : null;
+    
 }

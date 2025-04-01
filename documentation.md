@@ -469,14 +469,8 @@ We will **display a loader** when the blog posts are being fetched instead of sh
 #### **5️⃣ Avatar & Profile Management**  
 - Add a **new collection** in Appwrite named **profiles** (store user profile details).  
 - Configure an **Avatar Bucket** in Appwrite to store user profile images.  
-- Store the **Collection ID** for profiles and the **Avatar Bucket ID** in the `.env` file for easy configuration.  
+- Store the **Collection ID** for profiles and the **Avatar Bucket ID** in the `.env` file for easy configuration.    
 
 ---
 
-### **📌 Summary for Documentation**
-> **We are improving the platform by enhancing the UI and user experience.**  
-> Key updates include an improved **Home Page, Header, Footer, My Posts page, and Login/Signup pages**.  
-> We are also creating a **Profile Page** with editable **username, name, bio, social links, and posts**, along with an **Edit Profile Page**.  
-> To manage profiles, we are adding a **profiles collection** and an **avatar bucket** in Appwrite, with their IDs stored in the `.env` file.  
-
----
+now we add email verification to the authentication login system. also add a like and comment features to the posts for the logged in users. 

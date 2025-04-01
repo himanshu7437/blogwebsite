@@ -15,6 +15,9 @@ import MyPosts from './pages/MyPosts.jsx'
 import Post from './pages/Post.jsx'
 import Profile from './pages/Profile.jsx'
 import EditProfile from './pages/EditProfile.jsx'
+import {VerifyEmail} from './components/index.js'
+import {VerifyEmailHandler} from './components/index.js'
+
 
 const router = createBrowserRouter([
   {
@@ -86,6 +89,21 @@ const router = createBrowserRouter([
             path: "/profile/:username",
             element: (
                 <Profile />
+            ),
+        },
+        // verify emil
+        {
+            path: "/verify-email",
+            element: (
+                <AuthLayout authentication={false}>
+                    <VerifyEmail />
+                </AuthLayout>
+            ),
+        },
+        {
+            path: "/verify",
+            element: (
+                <VerifyEmailHandler />
             ),
         },
         // Add 404 handler
