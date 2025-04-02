@@ -225,27 +225,28 @@ async isUsernameAvailable(username) {
     }
 }
 
+// to use upload avatar feature just add {avatarfile} in the parameters...
 async updateProfile(profileId, { username, bio, avatarFile, userId, name, social_instagram, social_twitter, social_linkedin, social_github }) {
     try {
-        let avatarId = null
+        // let avatarId = null
         
         // Handle avatar upload
-        if (avatarFile) {
-            // Delete old avatar if exists
-            try {
-                await this.bucket.deleteFile(conf.appwriteBucket2Id, userId)
-            } catch (error) {
-                if (error.code !== 404) console.error("Avatar delete error:", error)
-            }
+        // if (avatarFile) {
+        //     // Delete old avatar if exists
+        //     try {
+        //         await this.bucket.deleteFile(conf.appwriteBucket2Id, userId)
+        //     } catch (error) {
+        //         if (error.code !== 404) console.error("Avatar delete error:", error)
+        //     }
             
-            // Upload new avatar
-            const file = await this.bucket.createFile(
-                conf.appwriteBucket2Id,
-                userId, // Using user ID as file ID
-                avatarFile
-            )
-            avatarId = file.$id
-        }
+        //     // Upload new avatar
+        //     const file = await this.bucket.createFile(
+        //         conf.appwriteBucket2Id,
+        //         userId, // Using user ID as file ID
+        //         avatarFile
+        //     )
+        //     avatarId = file.$id
+        // }
 
         // Update profile document
         return await this.databases.updateDocument(
@@ -260,7 +261,7 @@ async updateProfile(profileId, { username, bio, avatarFile, userId, name, social
                 social_twitter,
                 social_linkedin,
                 social_github,
-                ...(avatarId && { avatar: avatarId })
+                // ...(avatarId && { avatar: avatarId })
             }
         )
     } catch (error) {

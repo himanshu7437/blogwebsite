@@ -10,7 +10,7 @@ function EditProfile() {
         username: '',
         name: '',
         bio: '',
-        avatarFile: null,
+        // avatarFile: null,  // less storage issue
         social_instagram: '',
         social_twitter: '',
         social_linkedin: '',
@@ -19,7 +19,7 @@ function EditProfile() {
     const [originalUsername, setOriginalUsername] = useState('')
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
-    const [previewAvatar, setPreviewAvatar] = useState(null)
+    // const [previewAvatar, setPreviewAvatar] = useState(null)
     const userData = useSelector(state => state.auth.userData)
     const navigate = useNavigate()
 
@@ -30,9 +30,9 @@ function EditProfile() {
                 if(existingProfile) {
                     setProfile(existingProfile)
                     setOriginalUsername(existingProfile.username)
-                    if(existingProfile.avatar) {
-                        setPreviewAvatar(appwriteService.getAvatarPreview(existingProfile.avatar))
-                    }
+                    // if(existingProfile.avatar) {
+                    //     setPreviewAvatar(appwriteService.getAvatarPreview(existingProfile.avatar))
+                    // }
                 }
             } catch (error) {
                 console.error("Error fetching profile:", error)
@@ -42,15 +42,15 @@ function EditProfile() {
         if(userData) fetchProfile()
     }, [userData])
 
-    const handleFileChange = (e) => {
-        const file = e.target.files[0]
-        if (file) {
-            const reader = new FileReader()
-            reader.onloadend = () => setPreviewAvatar(reader.result)
-            reader.readAsDataURL(file)
-            setProfile(prev => ({ ...prev, avatarFile: file }))
-        }
-    }
+    // const handleFileChange = (e) => {
+    //     const file = e.target.files[0]
+    //     if (file) {
+    //         const reader = new FileReader()
+    //         reader.onloadend = () => setPreviewAvatar(reader.result)
+    //         reader.readAsDataURL(file)
+    //         setProfile(prev => ({ ...prev, avatarFile: file }))
+    //     }
+    // }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -92,7 +92,7 @@ function EditProfile() {
                 profile.$id, 
                 {
                     ...profile,
-                    avatarFile: profile.avatarFile,
+                    // avatarFile: profile.avatarFile,
                     userId: userData.$id
                 }
             )
@@ -113,7 +113,7 @@ function EditProfile() {
             
             <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Profile Picture Section */}
-                <div className="pb-6 border-b">
+                {/* <div className="pb-6 border-b">
                     <label className="block mb-4 font-medium">Profile Picture</label>
                     <div className="flex items-center gap-4">
                         <div className="relative group">
@@ -138,7 +138,7 @@ function EditProfile() {
                             </p>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
                 {/* Basic Info Section */}
                 <div className="space-y-4">

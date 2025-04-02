@@ -25,7 +25,6 @@ export class AuthService {
             if(userAccount) {
                 // Create initial profile
                 return await service.createInitialProfile(userAccount.$id, name)
-                // call another method
 
             } else {
                 return userAccount;
