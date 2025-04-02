@@ -25,7 +25,7 @@ function PostForm({post}) {
 
   
   const submit = async (data) => {
-    setIsSubmitting(true); // Start loading
+    setIsSubmitting(true);
     try {
       if(post) {
         const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null
@@ -42,7 +42,6 @@ function PostForm({post}) {
           navigate(`/post/${dbPost.$id}`)
         }
       } else {
-        // assignment - improve the below line check conditionally as done above. check if its needed or not.
       const file = await appwriteService.uploadFile(data.image[0]);
 
       if(file) {
@@ -59,7 +58,7 @@ function PostForm({post}) {
       }
       }
     } finally {
-      setIsSubmitting(false); // Stop loading in any case
+      setIsSubmitting(false);
     }
   }
 

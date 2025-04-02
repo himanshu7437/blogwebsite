@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Service from "../appwrite/config";
 import { useSelector } from "react-redux";
-import { Link } from "react-router"; // Fixed import
+import { Link } from "react-router";
 
 const CommentSection = ({ postId, username }) => {
   const user = useSelector((state) => state.auth.userData);

@@ -195,7 +195,6 @@ export class Service {
         }
     }
 
-    // In your appwrite/config.js service class
 
 async getProfileByUserId(userId) {
     try {

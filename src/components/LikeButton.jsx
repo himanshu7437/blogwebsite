@@ -37,7 +37,7 @@ const LikeButton = ({ postId }) => {
     fetchLikesData();
   }, [postId, user]);
 
-  // Handle like/unlike action
+ 
   const handleLike = async () => {
     if (!user) {
       alert('Please login to like posts');
@@ -53,12 +53,12 @@ const LikeButton = ({ postId }) => {
         await Service.unlikePost(likeId);
         setIsLiked(false);
         setLikeId(null);
-        setLikeCount((prev) => Math.max(prev - 1, 0)); // UI updates instantly
+        setLikeCount((prev) => Math.max(prev - 1, 0)); 
       } else {
         const newLike = await Service.likePost(postId, user.$id);
         setIsLiked(true);
         setLikeId(newLike.$id);
-        setLikeCount((prev) => prev + 1); // UI updates instantly
+        setLikeCount((prev) => prev + 1);
       }
     } catch (error) {
       console.error('Like error:', error);

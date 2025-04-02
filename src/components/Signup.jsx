@@ -1,14 +1,11 @@
 import React, { useState } from 'react'
 import authService from '../appwrite/auth'
 import { Link, useNavigate } from 'react-router'
-import { login } from '../store/authSlice'
-import { Button, Input, Logo } from './index'
-import { useDispatch } from 'react-redux'
+import { Button, Input } from './index'
 import { useForm } from 'react-hook-form'
 import { FaUser, FaEnvelope, FaLock, FaEye, FaEyeSlash } from 'react-icons/fa'
 
 function Signup() {
-    const dispatch = useDispatch()
     const navigate = useNavigate()
     const [error, setError] = useState("")
     const [showPassword, setShowPassword] = useState(false)

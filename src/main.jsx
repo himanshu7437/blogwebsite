@@ -75,8 +75,6 @@ const router = createBrowserRouter([
             path: "/post/:slug",
             element: <Post />,
         },
-        
-        // new routes added
         {
             path: "/edit-profile",
             element: (

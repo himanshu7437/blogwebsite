@@ -30,7 +30,7 @@ function MyPosts() {
         }
         
         fetchPosts()
-    }, [userData]) // Add userData to dependencies
+    }, [userData])
 
     if (loading) {
         return (

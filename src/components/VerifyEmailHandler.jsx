@@ -21,7 +21,6 @@ export default function VerifyEmailHandler() {
             }
 
             try {
-                // Decode URL-encoded secret
                 const decodedSecret = decodeURIComponent(secret);
                 
                 await authService.verifyEmail(userId, decodedSecret);

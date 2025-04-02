@@ -5,6 +5,7 @@ import { Container, Button, PostCard } from '../components'
 import { useSelector } from 'react-redux'
 import { Query } from 'appwrite'
 import { FaInstagram, FaTwitter, FaLinkedin, FaGithub, FaPen } from 'react-icons/fa'
+import profileImg from '../images/user.png'
 
 function Profile() {
     const { username } = useParams()
@@ -104,7 +105,7 @@ function Profile() {
                             <div className="relative -mt-12 group">
                                 <div className="absolute inset-0 transition-opacity opacity-50 rounded-3xl bg-gradient-to-br from-blue-200 to-purple-300 blur-xl group-hover:opacity-70"></div>
                                 <img 
-                                    src={avatarUrl}
+                                    src={profileImg}
                                     alt={profile.username}
                                     className="relative z-10 object-cover w-32 h-32 transition-transform duration-300 border-4 border-white shadow-xl rounded-2xl hover:scale-105"
                                 />
