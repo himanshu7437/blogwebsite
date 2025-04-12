@@ -111,7 +111,8 @@ export class Service {
 
     getFilePreview(fileId) {
         try {
-            return this.bucket.getFilePreview(conf.appwriteBucketId, fileId);
+            // return this.bucket.getFilePreview(conf.appwriteBucketId, fileId);
+            return `https://cloud.appwrite.io/v1/storage/buckets/67ed3103003b220faa1d/files/${fileId}/view?project=67ed2c860014c03240b1&mode=admin`
         } catch (error) {
             console.error("Appwrite service :: getFilePreview :: error", error);
             return conf.defaultFilePreview;
@@ -160,7 +161,8 @@ export class Service {
 
     getAvatarPreview(fileId) {
         try {
-            return this.bucket.getFilePreview(conf.appwriteBucket2Id, fileId);
+            // return this.bucket.getFilePreview(conf.appwriteBucket2Id, fileId);
+            return `https://cloud.appwrite.io/v1/storage/buckets/67ed30f70016c0e46cb4/files/${fileId}/view?project=67ed2c860014c03240b1&mode=admin`
         } catch (error) {
             console.error("Appwrite Profile :: getAvatarPreview :: error", error);
             return conf.defaultAvatarId;
@@ -224,28 +226,27 @@ async isUsernameAvailable(username) {
     }
 }
 
-// to use upload avatar feature just add {avatarfile} in the parameters...
 async updateProfile(profileId, { username, bio, avatarFile, userId, name, social_instagram, social_twitter, social_linkedin, social_github }) {
     try {
-        // let avatarId = null
+        let avatarId = null
         
-        // Handle avatar upload
-        // if (avatarFile) {
-        //     // Delete old avatar if exists
-        //     try {
-        //         await this.bucket.deleteFile(conf.appwriteBucket2Id, userId)
-        //     } catch (error) {
-        //         if (error.code !== 404) console.error("Avatar delete error:", error)
-        //     }
+        //  Handle avatar upload
+        if (avatarFile) {
+            // Delete old avatar if exists
+            try {
+                await this.bucket.deleteFile(conf.appwriteBucket2Id, userId)
+            } catch (error) {
+                if (error.code !== 404) console.error("Avatar delete error:", error)
+            }
             
-        //     // Upload new avatar
-        //     const file = await this.bucket.createFile(
-        //         conf.appwriteBucket2Id,
-        //         userId, // Using user ID as file ID
-        //         avatarFile
-        //     )
-        //     avatarId = file.$id
-        // }
+            // Upload new avatar
+            const file = await this.bucket.createFile(
+                conf.appwriteBucket2Id,
+                userId, // Using user ID as file ID
+                avatarFile
+            )
+            avatarId = file.$id
+        }
 
         // Update profile document
         return await this.databases.updateDocument(
@@ -260,7 +261,7 @@ async updateProfile(profileId, { username, bio, avatarFile, userId, name, social
                 social_twitter,
                 social_linkedin,
                 social_github,
-                // ...(avatarId && { avatar: avatarId })
+                ...(avatarId && { avatar: avatarId })
             }
         )
     } catch (error) {
