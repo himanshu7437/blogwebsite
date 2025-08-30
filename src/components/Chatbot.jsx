@@ -2,7 +2,10 @@ import React, { useState, useEffect, useRef } from "react";
 import { MessageCircle, X, Send, Bot, User, Wand2 } from "lucide-react";
 import { Button } from "../components";
 // import axios from "axios"; // For API integration
-// import conf from "../conf/conf";
+import conf from "../conf/conf";
+import { GoogleGenerativeAI } from "@google/generative-ai";
+
+
 
 const predefinedResponses = {
   "hello": "Hi there! Welcome to Blogsphere. How can I assist you today? 😊",
@@ -36,6 +39,44 @@ const predefinedResponses = {
   "default": "I'm still learning! For immediate help, feel free to email me or visit my [GitHub](https://github.com/himanshu7437).",
 };
 
+const contextBrief = `
+You are BlogSphere's support assistant 🤖✨. 
+Always answer ONLY based on the following information:
+
+📌 About BlogSphere:
+- BlogSphere 📝 is a modern, sleek blogging platform built with React.js (frontend) and Appwrite (backend).
+- It allows users to create, edit, deactivate, like, and comment on blog posts. 
+- Posts can be permanently deleted; they can also be deactivated.
+- BlogSphere includes user profiles, likes, and a comments system. 
+- The UI is fully responsive across all devices.
+
+👥 User Roles:
+- Guests (not logged in): Can ONLY view blog posts. They cannot like, comment, or create posts.
+- Logged-in users: Can sign up, log in, edit profiles, create/edit/deactivate posts, like posts, and add/edit/delete comments.
+
+⚡ Tech Stack:
+- Frontend: React.js, Redux, Tailwind CSS, React Router, React Icons.
+- Backend (Appwrite Services): Authentication, Database (posts, comments, likes, user profiles), Storage (images), Appwrite Functions.
+
+🛠️ Common Issues:
+- If the site does not work properly, users should refresh the page or contact support via GitHub: https://github.com/himanshu7437.
+
+💬 Guidelines for Responses:
+1. Answer questions strictly based on BlogSphere only.
+2. If asked unrelated questions (math, history, geography, general knowledge, etc.), politely reply: 
+   👉 "I'm still learning! For immediate help, feel free to email me or visit my [GitHub](https://github.com/himanshu7437)."
+3. If the user greets you (like "hello", "how are you"), respond politely and briefly, then offer BlogSphere-related help. 
+   Example: "Hi there! 👋 I'm doing great, thanks for asking. How can I assist you with BlogSphere today?"
+
+Stick to this context at all times.
+`;
+
+
+
+const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY); 
+const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+
+
 export default function Chatbot() {
   const [messages, setMessages] = useState(() => {
     const saved = localStorage.getItem("chatHistory");
@@ -60,23 +101,36 @@ export default function Chatbot() {
   useEffect(scrollToBottom, [messages]);
 
   // AI Response Simulation
-  const getResponse = async (query) => {
-    setIsTyping(true);
-    
-    try {
-      // For production: Replace with actual API call
-      // const response = await axios.post(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${conf.geminiapikey}`, { query });
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      const cleanQuery = query.toLowerCase();
-      return predefinedResponses[cleanQuery] || 
-        Object.entries(predefinedResponses).find(([key]) => 
-          cleanQuery.includes(key)
-        )?.[1] || predefinedResponses.default;
-    } finally {
-      setIsTyping(false);
-    }
-  };
+
+const getResponse = async (query) => {
+  setIsTyping(true);
+  try {
+    const cleanQuery = query.toLowerCase();
+
+    // Step 1: Try predefined FAQ
+    const predefined = 
+      predefinedResponses[cleanQuery] || 
+      Object.entries(predefinedResponses).find(([key]) =>
+        cleanQuery.includes(key)
+      )?.[1];
+
+    if (predefined) return predefined;
+
+    // Step 2: Ask Gemini with context
+          const result = await model.generateContent([
+      `${contextBrief}\n\nUser question: ${query}`
+    ]);
+
+    return result.response.text();
+
+  } catch (error) {
+    console.error("Gemini API error:", error);
+    return "⚠️ Sorry, I couldn’t get an answer right now. Please try again later.";
+  } finally {
+    setIsTyping(false);
+  }
+};
+
 
   const handleSend = async () => {
     if (!input.trim()) return;
