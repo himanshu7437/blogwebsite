@@ -11,7 +11,7 @@ const conf = {
     appwriteTinyMce: String(import.meta.env.VITE_TINYMCE),
     defaultAvatarId: String(import.meta.env.VITE_APPWRITE_DEFAULT_AVATAR),
     appwriteFrontendUrl: String(import.meta.env.VITE_APPWRITE_FRONTEND_URL),   
-    // geminiapikey: String(import.meta.env.VITE_GEMINI_API_KEY)   
+    geminiapikey: String(import.meta.env.VITE_GEMINI_API_KEY)   
 }
 
 export default conf
