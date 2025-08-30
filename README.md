@@ -121,7 +121,7 @@ Your blog website should now be running at `http://localhost:3000/`.
 ---
 
 ## 🧑‍💻 Contributors  
-👤 **Your Name** – [GitHub Profile](https://github.com/himanshu7437)  
+👤 **Himanshu Sharma** – [GitHub Profile](https://github.com/himanshu7437)  
 
 ---
 
