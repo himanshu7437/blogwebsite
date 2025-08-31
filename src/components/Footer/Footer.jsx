@@ -36,12 +36,12 @@ function Footer() {
             <h3 className="mb-4 font-semibold text-white">Resources</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/post/67ed4084000031ca9621" className="text-sm text-gray-400 transition-colors hover:text-white">
+                <Link to="post/68b4329500361269ebf4" className="text-sm text-gray-400 transition-colors hover:text-white">
                   Blog & Tutorials
                 </Link>
               </li>
               <li>
-                <a href='https://github.com/himanshu7437' rel="noopener noreferrer" target="_blank"  className="text-sm text-gray-400 transition-colors hover:text-white">
+                <a href='https://github.com/himanshu7437/blogwebsite' rel="noopener noreferrer" target="_blank"  className="text-sm text-gray-400 transition-colors hover:text-white">
                   Documentation
                 </a>
               </li>
