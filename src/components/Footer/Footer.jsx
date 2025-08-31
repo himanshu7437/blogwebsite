@@ -17,16 +17,16 @@ function Footer() {
               Empowering creators worldwide to share their stories and connect with audiences.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 transition-colors hover:text-white">
+              <a href="https://x.com/himanshu7437"  target="_blank" className="text-gray-400 transition-colors hover:text-white">
                 <FaTwitter size={20} />
               </a>
-              <a href="#" className="text-gray-400 transition-colors hover:text-white">
+              <a href="https://github.com/himanshu7437"  target="_blank" className="text-gray-400 transition-colors hover:text-white">
                 <FaGithub size={20} />
               </a>
-              <a href="#" className="text-gray-400 transition-colors hover:text-white">
+              <a href="https://www.linkedin.com/in/himanshu7437"  target="_blank" className="text-gray-400 transition-colors hover:text-white">
                 <FaLinkedin size={20} />
               </a>
-              <a href="#" className="text-gray-400 transition-colors hover:text-white">
+              <a href="https://www.instagram.com/himanshu7437"  target="_blank" className="text-gray-400 transition-colors hover:text-white">
                 <FaInstagram size={20} />
               </a>
             </div>
@@ -37,23 +37,18 @@ function Footer() {
             <h3 className="mb-4 font-semibold text-white">Resources</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/blog" className="text-sm text-gray-400 transition-colors hover:text-white">
+                <Link to="/post/67ed4084000031ca9621" className="text-sm text-gray-400 transition-colors hover:text-white">
                   Blog & Tutorials
                 </Link>
               </li>
               <li>
-                <Link to="/developers" className="text-sm text-gray-400 transition-colors hover:text-white">
-                  Developer API
-                </Link>
+                <a href='https://github.com/himanshu7437' rel="noopener noreferrer" target="_blank"  className="text-sm text-gray-400 transition-colors hover:text-white">
+                  Documentation
+                </a>
               </li>
               <li>
                 <Link to="/help-center" className="text-sm text-gray-400 transition-colors hover:text-white">
                   Help Center
-                </Link>
-              </li>
-              <li>
-                <Link to="/community" className="text-sm text-gray-400 transition-colors hover:text-white">
-                  Community Forum
                 </Link>
               </li>
             </ul>
@@ -69,18 +64,8 @@ function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/careers" className="text-sm text-gray-400 transition-colors hover:text-white">
-                  Careers
-                </Link>
-              </li>
-              <li>
-                <Link to="/press" className="text-sm text-gray-400 transition-colors hover:text-white">
-                  Press Kit
-                </Link>
-              </li>
-              <li>
                 <Link to="/contact" className="text-sm text-gray-400 transition-colors hover:text-white">
-                  Contact Sales
+                  Contact
                 </Link>
               </li>
             </ul>
