@@ -4,7 +4,7 @@ import { FaTwitter, FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa'
 
 function Footer() {
   return (
-    <footer className="text-gray-300 bg-gray-900 border-t border-gray-700">
+    <footer className="text-gray-300 bg-gradient-to-b from-gray-900 via-gray-900 to-gray-800 border-t border-gray-700">
       <div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4 lg:grid-cols-5">
           {/* Brand Section */}
@@ -92,17 +92,17 @@ function Footer() {
               <h3 className="mb-4 font-semibold text-white">Legal</h3>
               <ul className="space-y-2">
                 <li>
-                  <Link to="/privacy" className="text-sm text-gray-400 transition-colors hover:text-white">
+                  <Link to="/" className="text-sm text-gray-400 transition-colors hover:text-white">
                     Privacy Policy
                   </Link>
                 </li>
                 <li>
-                  <Link to="/terms" className="text-sm text-gray-400 transition-colors hover:text-white">
+                  <Link to="/" className="text-sm text-gray-400 transition-colors hover:text-white">
                     Terms of Service
                   </Link>
                 </li>
                 <li>
-                  <Link to="/security" className="text-sm text-gray-400 transition-colors hover:text-white">
+                  <Link to="/" className="text-sm text-gray-400 transition-colors hover:text-white">
                     Security
                   </Link>
                 </li>
