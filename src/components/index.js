@@ -18,5 +18,6 @@ import CommentSection from "./CommentSection";
 import VerifyEmailHandler from "./VerifyEmailHandler";
 import VerifyEmail from "./VerifyEmail";
 import Chatbot from "./Chatbot";
+import ScrollToTop from "./ScrollToTop";
 
-export {Header, Footer, Container, Logo, LogoutBtn, RTE, Signup, Login, PostForm, PostCard, AuthLayout, Button, Input, Select, Loader, LikeButton, CommentSection, VerifyEmailHandler, VerifyEmail, Chatbot }
+export {Header, Footer, Container, Logo, LogoutBtn, RTE, Signup, Login, PostForm, PostCard, AuthLayout, Button, Input, Select, Loader, LikeButton, CommentSection, VerifyEmailHandler, VerifyEmail, Chatbot, ScrollToTop }

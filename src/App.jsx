@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import authService from "./appwrite/auth";
 import { login, logout } from "./store/authSlice";
 
-import { Footer, Header, Chatbot } from "./components";
+import { Footer, Header, Chatbot, ScrollToTop } from "./components";
 import { Outlet } from "react-router";
 
 function App() {
@@ -27,6 +27,7 @@ function App() {
     <div className="flex flex-wrap content-between min-h-screen bg-white">
       <div className="block w-full">
         <Header />
+        <ScrollToTop />
         <main>
           <Outlet />
         </main>
