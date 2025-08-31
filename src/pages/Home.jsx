@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import appwriteService from '../appwrite/config'
 import { Container, PostCard, Loader } from '../components'
 import { Link, useNavigate } from 'react-router'

@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link } from 'react-router'
 import Logo from '../Logo'
 import { FaTwitter, FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa'
@@ -59,7 +58,7 @@ function Footer() {
             <h3 className="mb-4 font-semibold text-white">Company</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/about" className="text-sm text-gray-400 transition-colors hover:text-white">
+                <Link to="/about-us" className="text-sm text-gray-400 transition-colors hover:text-white">
                   About Us
                 </Link>
               </li>

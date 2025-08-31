@@ -17,6 +17,7 @@ import Profile from './pages/Profile.jsx'
 import EditProfile from './pages/EditProfile.jsx'
 import {VerifyEmail} from './components/index.js'
 import {VerifyEmailHandler} from './components/index.js'
+import About from './pages/AboutPage.jsx'
 
 
 const router = createBrowserRouter([
@@ -102,6 +103,14 @@ const router = createBrowserRouter([
             path: "/verify",
             element: (
                 <VerifyEmailHandler />
+            ),
+        },
+
+        // footer pages
+        {
+            path: "/about-us",
+            element: (
+                <About />
             ),
         },
         // Add 404 handler
