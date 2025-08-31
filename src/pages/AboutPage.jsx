@@ -1,6 +1,6 @@
 import { Container } from '../components';
 import { Link } from 'react-router';
-import profilepic from "../images/himanshu_sharma_profile.jpeg"
+import profilepic from "../images/himanshu_Sharma_profile.jpeg"
 
 function About() {
     return (
