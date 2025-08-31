@@ -36,7 +36,7 @@ function Login() {
                 }
 
                 dispatch(authLogin(userData));
-                navigate("/", { replace: true });
+                setTimeout(() => navigate("/", { replace: true }), 0);
             }
         } catch (error) {
             setError(error.message)

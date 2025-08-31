@@ -29,6 +29,11 @@ function Home() {
         fetchPosts()
     }, [])
 
+    if (authStatus === null) {
+        return <Loader message="Preparing your dashboard..." />;
+    }
+
+
     if (loading) {
         return (
             <div className="flex items-center justify-center w-full min-h-screen">
