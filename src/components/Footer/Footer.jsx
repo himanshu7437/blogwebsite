@@ -74,15 +74,15 @@ function Footer() {
           <div className="md:col-span-2 lg:col-span-1">
             <h3 className="mb-4 font-semibold text-white">Stay Updated</h3>
             <form className="mb-6">
-              <div className="flex flex-col gap-2 sm:flex-row">
+              <div className="flex flex-col gap-2">
                 <input
                   type="email"
                   placeholder="Enter your email"
-                  className="px-4 py-2 text-sm bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="px-4 py-2 text-sm bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
                 />
                 <button
                   type="submit"
-                  className="px-4 py-2 text-sm text-white transition-colors bg-blue-600 rounded-lg hover:bg-blue-700"
+                  className="px-4 py-2 text-sm text-white transition-colors bg-blue-600 rounded-lg hover:bg-blue-700 w-full sm:w-auto"
                 >
                   Subscribe
                 </button>

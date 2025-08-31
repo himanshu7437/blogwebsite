@@ -1,1 +1,28 @@
 @import "tailwindcss";
+
+/* Glass Morphism Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(241, 245, 249, 0.5); /* semi-transparent */
+  border-radius: 10px;
+  backdrop-filter: blur(4px);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.6); /* semi-transparent gray */
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(71, 85, 105, 0.8); /* darker semi-transparent */
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(100, 116, 139, 0.6) rgba(241, 245, 249, 0.5);
+}

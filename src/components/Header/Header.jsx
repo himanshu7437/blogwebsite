@@ -66,7 +66,7 @@ function Header() {
   ]
 
   return (
-    <header className="bg-gray-900 border-b border-gray-800 shadow-lg">
+    <header className="text-gray-300 bg-gradient-to-b from-gray-900 via-gray-900 to-gray-800 border-t border-gray-700">
       <Container>
         <nav className="flex items-center justify-between py-4">
           <div className="flex items-center flex-shrink-0">
