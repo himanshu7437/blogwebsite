@@ -236,7 +236,7 @@ async updateProfile(profileId, { username, bio, avatarFile, userId, name, social
             try {
                 await this.bucket.deleteFile(conf.appwriteBucket2Id, userId)
             } catch (error) {
-                if (error.code !== 404) // console.error("Avatar delete error:", error)
+                // if (error.code !== 404) // console.error("Avatar delete error:", error)
             }
             
             // Upload new avatar
