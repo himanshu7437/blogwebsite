@@ -18,7 +18,7 @@ const CommentSection = ({ postId, username }) => {
       setComments(fetchedComments);
       setError(null);
     } catch (error) {
-      console.error("Error fetching comments:", error);
+      // console.error("Error fetching comments:", error);
       // Only show error to logged-in users
       if (user) {
         setError("Failed to load comments. Please try again later.");
@@ -46,7 +46,7 @@ const CommentSection = ({ postId, username }) => {
       setComments((prev) => [addedComment, ...prev]);
       setNewComment("");
     } catch (error) {
-      console.error("Error adding comment:", error);
+      // console.error("Error adding comment:", error);
       alert("Failed to add comment. Please try again.");
     }
   };
@@ -59,7 +59,7 @@ const CommentSection = ({ postId, username }) => {
       await Service.deleteComment(commentId);
       setComments(prev => prev.filter(c => c.$id !== commentId));
     } catch (error) {
-      console.error('Error deleting comment:', error);
+      // console.error('Error deleting comment:', error);
       alert('Failed to delete comment');
     }
   };

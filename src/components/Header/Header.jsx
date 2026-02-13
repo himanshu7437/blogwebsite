@@ -33,7 +33,7 @@ function Header() {
           const profileData = await appwriteService.getProfileByUserId(userData.$id);
           setProfile(profileData);
         } catch (error) {
-          console.error("Error fetching profile:", error);
+          // console.error("Error fetching profile:", error);
         } finally {
           setProfileLoading(false);
         }

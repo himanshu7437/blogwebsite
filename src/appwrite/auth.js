@@ -47,7 +47,7 @@ export class AuthService {
         try {
             return await this.account.updateVerification(userId, secret);
         } catch (error) {
-            console.error("Verification failed:", error);
+            // console.error("Verification failed:", error);
             throw error;
         }
     }
@@ -58,7 +58,7 @@ export class AuthService {
                 `${conf.appwriteFrontendUrl}/verify`
             );
         } catch (error) {
-            console.error("Verification email failed:", error);
+            // console.error("Verification email failed:", error);
             throw error;
         }
     }
@@ -71,7 +71,7 @@ export class AuthService {
             if (error.message.includes("missing scope (account)")) {
                 return null;
             }
-            console.error("Appwrite service :: getCurrentUser :: error", error);
+            // console.error("Appwrite service :: getCurrentUser :: error", error);
             return null;
         }
     }
@@ -81,7 +81,7 @@ export class AuthService {
             return await this.account.deleteSessions();
 
         } catch (error) {
-            console.log("Appwrite service :: logout :: error", error);
+            // console.log("Appwrite service :: logout :: error", error);
         }
     }
 }

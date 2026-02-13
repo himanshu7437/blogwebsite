@@ -19,7 +19,7 @@ function Profile() {
             try {
                 setLoading(true)
                 const profile = await appwriteService.getProfileByUsername(username)
-                console.log(profile.avatar)
+                // console.log(profile.avatar)
                 if (!profile) {
                     setProfile(null)
                     return
@@ -35,7 +35,7 @@ function Profile() {
                 setPosts(postsData?.documents || [])
 
             } catch (error) {
-                console.error("Profile Error:", error)
+                // console.error("Profile Error:", error)
             } finally {
                 setLoading(false)
             }

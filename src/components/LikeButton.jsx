@@ -28,7 +28,7 @@ const LikeButton = ({ postId }) => {
         setLikeId(null);
       }
     } catch (error) {
-      console.error('Error fetching likes:', error);
+      // console.error('Error fetching likes:', error);
     }
   };
 
@@ -47,7 +47,7 @@ const LikeButton = ({ postId }) => {
     try {
       if (isLiked) {
         if (!likeId) {
-          console.error("Error: Missing likeId while unliking.");
+          // console.error("Error: Missing likeId while unliking.");
           return;
         }
         await Service.unlikePost(likeId);
@@ -61,7 +61,7 @@ const LikeButton = ({ postId }) => {
         setLikeCount((prev) => prev + 1);
       }
     } catch (error) {
-      console.error('Like error:', error);
+      // console.error('Like error:', error);
     }
   };
 

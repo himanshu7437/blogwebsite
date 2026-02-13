@@ -35,7 +35,7 @@ function EditProfile() {
                     }
                 }
             } catch (error) {
-                console.error("Error fetching profile:", error)
+                    // console.error("Error fetching profile:", error)
                 setError("Failed to load profile data")
             }
         }
@@ -100,7 +100,7 @@ function EditProfile() {
             navigate(`/profile/${updatedProfile.username}?refresh=${Date.now()}`)
         } catch (error) {
             setError(error.message)
-            console.error("Update error:", error)
+            // console.error("Update error:", error)
         } finally {
             setLoading(false)
         }

@@ -30,7 +30,7 @@ export default function VerifyEmailHandler() {
                 navigate('/login?verified=true', { replace: true });
                 
             } catch (error) {
-                console.error('Verification error:', error);
+                // console.error('Verification error:', error);
                 const errorMessage = error?.message?.includes('invalid') 
                     ? 'Invalid or expired verification link'
                     : 'Verification failed. Please try again.';

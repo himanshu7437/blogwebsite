@@ -23,7 +23,7 @@ export class Service {
                 { title, content, featuredImage, status, userId, slug }
             );
         } catch (error) {
-            console.error("Appwrite service :: createPost :: error", error);
+            // console.error("Appwrite service :: createPost :: error", error);
             throw error;
         }
     }
@@ -37,7 +37,7 @@ export class Service {
                 { title, content, featuredImage, status, slug }
             );
         } catch (error) {
-            console.error("Appwrite service :: updatePost :: error", error);
+            // console.error("Appwrite service :: updatePost :: error", error);
             throw error;
         }
     }
@@ -51,7 +51,7 @@ export class Service {
             );
             return true;
         } catch (error) {
-            console.error("Appwrite service :: deletePost :: error", error);
+            // console.error("Appwrite service :: deletePost :: error", error);
             return false;
         }
     }
@@ -64,7 +64,7 @@ export class Service {
                 postid
             );
         } catch (error) {
-            console.error("Appwrite service :: getPost :: error", error);
+            // console.error("Appwrite service :: getPost :: error", error);
             return null;
         }
     }
@@ -80,7 +80,7 @@ export class Service {
             if (error.message.includes("not authorized")) {
                 return null;
             }
-            console.error("Appwrite service :: getPosts :: error", error);
+            // console.error("Appwrite service :: getPosts :: error", error);
             return null;
         }
     }
@@ -94,7 +94,7 @@ export class Service {
                 file
             );
         } catch (error) {
-            console.error("Appwrite service :: uploadFile :: error", error);
+            // console.error("Appwrite service :: uploadFile :: error", error);
             throw error;
         }
     }
@@ -104,7 +104,7 @@ export class Service {
             await this.bucket.deleteFile(conf.appwriteBucketId, fileId);
             return true;
         } catch (error) {
-            console.error("Appwrite service :: deleteFile :: error", error);
+            // console.error("Appwrite service :: deleteFile :: error", error);
             return false;
         }
     }
@@ -114,7 +114,7 @@ export class Service {
             // return this.bucket.getFilePreview(conf.appwriteBucketId, fileId);
             return `https://cloud.appwrite.io/v1/storage/buckets/67ed3103003b220faa1d/files/${fileId}/view?project=67ed2c860014c03240b1&mode=admin`
         } catch (error) {
-            console.error("Appwrite service :: getFilePreview :: error", error);
+            // console.error("Appwrite service :: getFilePreview :: error", error);
             return conf.defaultFilePreview;
         }
     }
@@ -140,7 +140,7 @@ export class Service {
                 }
             );
         } catch (error) {
-            console.error("Appwrite Profile :: createInitialProfile :: error", error);
+            // console.error("Appwrite Profile :: createInitialProfile :: error", error);
             throw error;
         }
     }
@@ -154,7 +154,7 @@ export class Service {
             );
             return response.documents.length ? response.documents[0] : null;
         } catch (error) {
-            console.error("Appwrite Profile :: getProfileByUsername :: error", error);
+            // console.error("Appwrite Profile :: getProfileByUsername :: error", error);
             return null;
         }
     }
@@ -164,7 +164,7 @@ export class Service {
             // return this.bucket.getFilePreview(conf.appwriteBucket2Id, fileId);
             return `https://cloud.appwrite.io/v1/storage/buckets/67ed30f70016c0e46cb4/files/${fileId}/view?project=67ed2c860014c03240b1&mode=admin`
         } catch (error) {
-            console.error("Appwrite Profile :: getAvatarPreview :: error", error);
+            // console.error("Appwrite Profile :: getAvatarPreview :: error", error);
             return conf.defaultAvatarId;
         }
     }
@@ -178,7 +178,7 @@ export class Service {
             );
             return response.documents.length ? response.documents[0] : null;
         } catch (error) {
-            console.error("Appwrite Profile :: getProfileByUserId :: error", error);
+            // console.error("Appwrite Profile :: getProfileByUserId :: error", error);
             return null;
         }
     }
@@ -192,7 +192,7 @@ export class Service {
             )
             return response.documents.length === 0
         } catch (error) {
-            console.error("Username check error:", error)
+            // console.error("Username check error:", error)
             return false
         }
     }
@@ -207,7 +207,7 @@ async getProfileByUserId(userId) {
         )
         return response.documents[0] || null
     } catch (error) {
-        console.error("Get profile by user ID error:", error)
+        // console.error("Get profile by user ID error:", error)
         return null
     }
 }
@@ -221,7 +221,7 @@ async isUsernameAvailable(username) {
         )
         return response.documents.length === 0
     } catch (error) {
-        console.error("Username check error:", error)
+        // console.error("Username check error:", error)
         return false
     }
 }
@@ -236,7 +236,7 @@ async updateProfile(profileId, { username, bio, avatarFile, userId, name, social
             try {
                 await this.bucket.deleteFile(conf.appwriteBucket2Id, userId)
             } catch (error) {
-                if (error.code !== 404) console.error("Avatar delete error:", error)
+                if (error.code !== 404) // console.error("Avatar delete error:", error)
             }
             
             // Upload new avatar
@@ -265,7 +265,7 @@ async updateProfile(profileId, { username, bio, avatarFile, userId, name, social
             }
         )
     } catch (error) {
-        console.error("Update profile error:", error)
+        // console.error("Update profile error:", error)
         throw error
     }
 }
@@ -283,7 +283,7 @@ async checkUserLike(postId, userId) {
         );
         return response.documents.length ? response.documents[0] : null;
     } catch (error) {
-        console.error("Appwrite service :: checkUserLike :: error", error);
+        // console.error("Appwrite service :: checkUserLike :: error", error);
         return null;
     }
 }
@@ -298,7 +298,7 @@ async getPostLikes(postId) {
         );
         return response.documents.length;
     } catch (error) {
-        console.error("Appwrite service :: getPostLikes :: error", error);
+        // console.error("Appwrite service :: getPostLikes :: error", error);
         return 0;
     }
 }
@@ -320,7 +320,7 @@ async likePost(postId, userId) {
             { postId, userId }
         );
     } catch (error) {
-        console.error("Appwrite service :: likePost :: error", error);
+        // console.error("Appwrite service :: likePost :: error", error);
         throw error;
     }
 }
@@ -335,7 +335,7 @@ async unlikePost(likeId) {
         );
         return true;
     } catch (error) {
-        console.error("Appwrite service :: unlikePost :: error", error);
+        // console.error("Appwrite service :: unlikePost :: error", error);
         return false;
     }
 }

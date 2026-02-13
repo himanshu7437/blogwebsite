@@ -34,7 +34,7 @@ function EditPost() {
                 }
             } catch (error) {
                 setError(error.message)
-                console.error("Fetch post error:", error)
+                // console.error("Fetch post error:", error)
             } finally {
                 setLoading(false)
             }

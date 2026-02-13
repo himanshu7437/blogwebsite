@@ -34,7 +34,7 @@ export default function Post() {
                             const NewProfile = await appwriteService.getProfileByUserId(userData.$id);
                             setcurrentProfile(NewProfile);
                         } catch (error) {
-                            console.error("Error fetching current profile:", error);
+                            // console.error("Error fetching current profile:", error);
                             setcurrentProfile(null);
                         }
                     }

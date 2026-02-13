@@ -124,7 +124,7 @@ const getResponse = async (query) => {
     return result.response.text();
 
   } catch (error) {
-    console.error("Gemini API error:", error);
+    // console.error("Gemini API error:", error);
     return "⚠️ Sorry, I couldn’t get an answer right now. Please try again later.";
   } finally {
     setIsTyping(false);
